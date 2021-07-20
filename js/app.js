@@ -132,7 +132,6 @@ for (let i = 0; i < storeLocations.length; i++) {
 
 /// ****CODE REVIEW: add a function that will combine the two arrays? nested for loop? ****
 
-
 // getAvgCustPerHr: function() {
 //     this.avgCustPerHr = randomCustPerHr(23, 65) + ' average customers/hr in Seattle';
 //     console.log(this.avgCustPerHr);
