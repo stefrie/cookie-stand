@@ -1,187 +1,114 @@
 'use strict';
-console.log('Are you still here?');
+console.log('Are you still there?');
 
-// INSTRUCTIONS FOR SALMON COOKIES:
-// 1. Stores the min/max hourly customers, and the average cookies per customer, in object properties
-// 2. Uses a method of that object to generate a random number of customers per hour. Objects/Math/random
-
-const storeSeattle = {
-    storeLoc: 'Seattle',
-    minCust: 23,
-    maxCust: 65,
-    avgCookiePerCust: 6.3,
-    getAvgCustPerHr: function() {
-        this.avgCustPerHr = randomCustPerHr(23, 65) + ' average customers/hr in Seattle';
-        console.log(this.avgCustPerHr);
-    },
-    salesPerHr: [],
-    results: []
+function Store (location, minCust, maxCust, cookiesPerCust) {
+    this.location = location;
+    this.minCust = minCust;
+    this.maxCust = maxCust;
+    this.cookiesPerCust = cookiesPerCust;
+    this.salesPerHr = [];
+    this.cookieTotals = 0;
+    this.getCookiesPerHour = function() {
+        for (let i = 0; i < storeHours.length; i++) {
+            let custPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
+            this.salesPerHr[i] = Math.floor(custPerHour * this.cookiesPerCust);   
+        }
+    };
+    this.getCookieTotals = function() {
+        for (let i = 0; i < this.salesPerHr.length; i++) {
+            this.cookieTotals = this.cookieTotals + this.salesPerHr[i];
+        }
+    };
 }
-// storeSeattle.getAvgCustPerHr();
-  
+
+Store.prototype.renderStore = function(tBodyElem) {
+    const rowElem = makeElement('tr', tBodyElem, null);
+    makeElement('th', rowElem, this.location)
+    for (let i = 0; i < this.salesPerHr.length; i++) {
+        makeElement('td', rowElem, this.salesPerHr[i]);
+    }
+    makeElement('td', rowElem, this.cookieTotals);
+};
+
+function storeData () {
+    for (let i = 0; i < allStores.length; i++) {
+        allStores[i].getCookiesPerHour();
+        allStores[i].getCookieTotals();
+    }
+}
+
 function randomCustPerHr(a, b) {
     let avgCustPerHr = Math.floor(Math.random() * (b - a + 1) + a);
     return avgCustPerHr;
 }
 
-const storeToyko = {
-    storeLoc: 'Toyko',
-    minCust: 3,
-    maxCust: 24,
-    avgCookiePerCust: 1.2,
-    getAvgCustPerHr: function() {
-        this.avgCustPerHr = randomCustPerHr(3, 24) + ' average customers/hr in Tokyo';
-        console.log(this.avgCustPerHr);
-    },
-    salesPerHr: [],
-    results: []
-}
-// storeToyko.getAvgCustPerHr();
-
-const storeDubai = {
-    storeLoc: 'Dubai',
-    minCust: 11,
-    maxCust: 38,
-    avgCookiePerCust: 3.7,
-    getAvgCustPerHr: function() {
-        this.avgCustPerHr = randomCustPerHr(11, 38) + ' average customers/hr in Dubai';
-        console.log(this.avgCustPerHr);
-    },
-    salesPerHr: [],
-    results: []
-}
-// storeDubai.getAvgCustPerHr();
-
-const storeParis = {
-    storeLoc: 'Paris',
-    minCust: 20,
-    maxCust: 38,
-    avgCookiePerCust: 2.3,
-    getAvgCustPerHr: function() {
-        this.avgCustPerHr = randomCustPerHr(20, 38) + ' average customers/hr in Paris';
-        console.log(this.avgCustPerHr);
-    },
-    salesPerHr: [],
-    results: []
-}
-// storeParis.getAvgCustPerHr();
-
-const storeLima = {
-    storeLoc: 'Lima',
-    minCust: 2,
-    maxCust: 16,
-    avgCookiePerCust: 4.6,
-    getAvgCustPerHr: function() {
-        this.avgCustPerHr = randomCustPerHr(2, 16) + ' average customers/hr in Lima';
-        console.log(this.avgCustPerHr);
-    },
-    salesPerHr: [],
-    results: []
-}
-// storeLima.getAvgCustPerHr();
-
-// INSTRUCTIONS (cont'd):
-// 3. Calculate and store the simulated amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated
-// [In other words: take the random number we generated within the object, and multiply that times average number of cookies per hour]
-let hoursArray = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm']
-
-function cookiesPerHour(storeLoc) {
-    for (let i=0; i<hoursArray.length; i++) {
-        storeLoc.getAvgCustPerHr();
-        let cookiesPH = parseInt(storeLoc.avgCookiePerCust) * parseInt(storeLoc.avgCustPerHr);
-        console.log(cookiesPH);
-        storeLoc.salesPerHr.push(cookiesPH);
-    } 
+function makeElement(tagName, parent, textContent) {
+    let element = document.createElement(tagName);
+    if (textContent) {
+        element.textContent = textContent;
+    }
+    parent.appendChild(element);
+    return element;
 }
 
-const storeLocations = [storeSeattle, storeToyko, storeDubai, storeParis, storeLima];
-
-// INSTRUCTIONS (cont'd):
-// 4. Store the results for each location in a separate array… perhaps as a property of the object representing that location
-for (let i=0; i < storeLocations.length; i++) {
-    cookiesPerHour(storeLocations[i]);
-    storeLocations[i].results.push(cookiesPerHour);
+function makeTable() {
+    const divElem = document.getElementById('store');
+    const tableElem = makeElement('table', divElem, null);
+    makeTHead(tableElem);
+    makeTBody(tableElem);
+    makeTFoot(tableElem);
 }
 
-// INSTRUCTIONS (cont'd):
-// 5. Display the values of each array as unordered lists in the browser
-const profileDivElem = document.getElementById('store');
+function makeTHead(tableElem) {
+    const tHeadElem = makeElement('thead', tableElem, null);
+    const rowElem = makeElement('tr', tHeadElem, null);
+    makeElement('th', rowElem, null);
+    for (let i = 0; i < storeHours.length; i++) {
+        makeElement('th', rowElem, storeHours[i]);
+    }
+    makeElement('th', rowElem, 'Daily Location Totals');
+}
 
-function renderStore(store) {
-    store.getAvgCustPerHr();
-    let sectionElem = document.createElement('section');
-    profileDivElem.appendChild(sectionElem)
-
-    let h3Elem = document.createElement('h3');
-    h3Elem.textContent = store.storeLoc;
-    sectionElem.appendChild(h3Elem);
-    
-    let ulElem = document.createElement('ul');
-    sectionElem.appendChild(ulElem);
-
-    for (let i = 0; i < store.salesPerHr.length; i++) {
-        let liElem = document.createElement('li');
-        liElem.textContent = `${store.salesPerHr[i]} cookies sold at (hour)`;
-        ulElem.appendChild(liElem);
+function makeTBody(tableElem) {
+    const tBodyElem = makeElement('tbody', tableElem, null);
+    for (let i = 0; i < allStores.length; i++) {
+        allStores[i].renderStore(tBodyElem);   
     }
 }
 
-for (let i = 0; i < storeLocations.length; i++) {
-    renderStore(storeLocations[i]);
+function makeTFoot(tableElem) {
+    const tFootElem = makeElement('tfoot', tableElem, null);
+    const rowElem = makeElement('tr', tFootElem, null);
+    makeElement('th', rowElem, 'Totals');
+    renderHourTotals(rowElem);
 }
 
-/// ****CODE REVIEW: add a function that will combine the two arrays? nested for loop? ****
+function renderHourTotals(rowElem) {
+    let dailyTotal = 0;
+    for (let hourIndex = 0; hourIndex < storeHours.length; hourIndex++) {
+        let hourlyTotal = 0;
+        for (let storeArrayIndex = 0; storeArrayIndex < allStores.length; storeArrayIndex++) {
+            hourlyTotal = hourlyTotal + allStores[storeArrayIndex].salesPerHr[hourIndex];
+        }
+        makeElement('td', rowElem, hourlyTotal);
+        dailyTotal = dailyTotal + hourlyTotal;
+    }
+    makeElement('td', rowElem, dailyTotal);
+}
 
-// getAvgCustPerHr: function() {
-//     this.avgCustPerHr = randomCustPerHr(23, 65) + ' average customers/hr in Seattle';
-//     console.log(this.avgCustPerHr);
+// // Store.AllStores[i].cookiesPerHour[hourIndex]
 
+function addStores(location, minCust, maxCust, cookiesPerCust) {
+    const newStore = new Store(location, minCust, maxCust, cookiesPerCust);
+    allStores.push(newStore);
+}
 
-//   for (let i = 0; i < kittenArray.length; i++) {
-//     renderKitten(kittenArray[i]);
- 
-//   const kittenArray = [frankie, jumper, serena];
-  
-//   // put frankie on the page!!
-//   // find the place on the page we want to add frankie
-//   // kittenProfiles - lets get a refernce
-//   const profileDivElem = document.getElementById('kittenProfiles');
-  
-//   // create some elements to put content in
-//   // <!-- <article>
-//   //           <h2></h2>
-//   //           <p></p>
-//   //           <ul>
-//   //             <li></li>
-//   //           </ul>
-//   //           <img>
-//   //         </article> -->
-//   // name
-//   //age
-//   //interests
-
-
-//   function renderKitten(kitten) {
-//     let articleElem = document.createElement('article');
-//     // parentElem.appendChild(childElem)
-//     profileDivElem.appendChild(articleElem);
-//     let imgElem = document.createElement('img');
-//     imgElem.src = kitten.photo;
-//     articleElem.appendChild(imgElem);
-//     let h2Elem = document.createElement('h2');
-//     h2Elem.textContent = kitten.name;
-//     articleElem.appendChild(h2Elem);
-//     let pElem = document.createElement('p');
-//     pElem.textContent = `age: ${kitten.age}`;
-//     articleElem.appendChild(pElem);
-//     let ulElem = document.createElement('ul');
-//     articleElem.appendChild(ulElem);
-//     for (let i = 0; i < kitten.interests.length; i++) {
-//       let liElem = document.createElement('li');
-//       liElem.textContent = kitten.interests[i];
-//       ulElem.appendChild(liElem)
-//     }
-//   }
-  
-//   for (let i = 0; i < kittenArray.length; i++) {
-//     renderKitten(kittenArray[i]);
+const allStores = [];
+const storeHours = ['6a', '7a', '8a', '9a', '10a', '11a', '12p', '1p', '2p', '3p', '4p', '5p', '6p', '7p'];
+addStores('Seattle', 23, 65, 6.3);
+addStores('Toyko', 3, 24, 1.2);
+addStores('Dubai', 11, 38, 3.7);
+addStores('Paris', 20, 38, 2.3);
+addStores('Lima', 2, 16, 4.6);
+storeData();
+makeTable();
