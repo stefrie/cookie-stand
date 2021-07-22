@@ -1,6 +1,79 @@
+body {
+    background-color: #FFDD94;
+    text-align: center;
+    color: #194AA3;
+    display: flexbox;
+}
 
+li {
+    border: solid grey .25px;
+    display: inline;
+    padding: 20px;
+    margin-right: 50px;
+    background-color: #8db0f0;
+    color: #EDC69A;
+}
 
-img {
+header {
+    display: flex;
+    justify-content: space-between;
+    border: thin solid black;
+    height: 100px;
+    align-items: center;
+}
+
+header img {
+    height: 40%;
+    margin-left: 50px;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 60px;
+}
+
+header ul {
+    width: 50%;
+    display: inline;
+}
+
+header nav {
+    font-size: large;
+}
+
+section article h3 {
+    font-size: 40px;
+    align-content: bottom;
+}
+
+#family img {
+    float: right;
+    padding: 20px;
+    height: 50%;
     width: 50%;
 }
 
+.col {
+    border: thin black;
+    height: 300px;
+}
+
+.col ul {
+    
+}
+
+@font-face {
+    font-family: 'marcellusregular', 'Times New Roman', Times, serif;
+    src: url('marcellus-regular-webfont.woff2') format('woff2'),
+         url('marcellus-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.flex-grid-fifths {
+    display: flex;
+    justify-content: space-between;
+  }
+  .flex-grid-fifths .col {
+    width: 32%;
+  }
