@@ -20,6 +20,7 @@ header {
     border: thin solid black;
     height: 100px;
     align-items: center;
+    background-color: #EDC672;
 }
 
 header img {
@@ -73,7 +74,8 @@ section article h3 {
 }
 
 .col {
-    height: 300px;
+    height: 225px;
+    align-items: center;
 }
 
 #col {
@@ -91,7 +93,21 @@ section article h3 {
 .flex-grid-fifths {
     display: flex;
     justify-content: space-between;
-  }
-  .flex-grid-fifths .col {
+}
+.flex-grid-fifths .col {
     width: 32%;
-  }
+}
+
+.column {
+    flex: 10%;
+}
+
+.fish-row {
+    display: flex;
+    justify-content: left;
+}
+
+#chinook {
+    height: 100%;
+    width: 100%;
+}
