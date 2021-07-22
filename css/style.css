@@ -23,7 +23,7 @@ header {
 }
 
 header img {
-    height: 40%;
+    height: 60%;
     margin-left: 50px;
 }
 
@@ -42,24 +42,42 @@ header nav {
 }
 
 section article h3 {
-    font-size: 40px;
+    font-size: 30px;
     align-content: bottom;
+}
+
+#shop {
+    display: flex;
+    justify-content: center;
+}
+
+#shop h2 {
+    align-items: center;
+}
+
+#shop img {
+    align-items: center;
+    margin: 10px;
+    height: 25%;
+    width: 25%;
+}
+
+#family {
+    height: 400px;
 }
 
 #family img {
     float: right;
     padding: 20px;
-    height: 50%;
-    width: 50%;
+    height: 80%;
 }
 
 .col {
-    border: thin black;
     height: 300px;
 }
 
-.col ul {
-    
+#col {
+    border: black thin;
 }
 
 @font-face {
