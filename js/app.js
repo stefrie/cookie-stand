@@ -1,7 +1,7 @@
 'use strict';
 console.log('Are you still there?');
 
-function Store (location, minCust, maxCust, cookiesPerCust) {
+function Store(location, minCust, maxCust, cookiesPerCust) {
     this.location = location;
     this.minCust = minCust;
     this.maxCust = maxCust;
@@ -112,3 +112,5 @@ addStores('Paris', 20, 38, 2.3);
 addStores('Lima', 2, 16, 4.6);
 storeData();
 makeTable();
+
+//bleep bloop//
