@@ -8,29 +8,31 @@ function Store(location, minCust, maxCust, cookiesPerCust) {
     this.cookiesPerCust = cookiesPerCust;
     this.salesPerHr = [];
     this.cookieTotals = 0;
-    this.getCookiesPerHour = function() {
+    this.getCookiesPerHour = function () {
         for (let i = 0; i < storeHours.length; i++) {
-            let custPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
-            this.salesPerHr[i] = Math.floor(custPerHour * this.cookiesPerCust);   
+            let custPerHour =
+                Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) +
+                this.minCust;
+            this.salesPerHr[i] = Math.floor(custPerHour * this.cookiesPerCust);
         }
     };
-    this.getCookieTotals = function() {
+    this.getCookieTotals = function () {
         for (let i = 0; i < this.salesPerHr.length; i++) {
             this.cookieTotals = this.cookieTotals + this.salesPerHr[i];
         }
     };
 }
 
-Store.prototype.renderStore = function(tBodyElem) {
+Store.prototype.renderStore = function (tBodyElem) {
     const rowElem = makeElement('tr', tBodyElem, null);
-    makeElement('th', rowElem, this.location)
+    makeElement('th', rowElem, this.location);
     for (let i = 0; i < this.salesPerHr.length; i++) {
         makeElement('td', rowElem, this.salesPerHr[i]);
     }
     makeElement('td', rowElem, this.cookieTotals);
 };
 
-function storeData () {
+function storeData() {
     for (let i = 0; i < allStores.length; i++) {
         allStores[i].getCookiesPerHour();
         allStores[i].getCookieTotals();
@@ -72,7 +74,7 @@ function makeTHead(tableElem) {
 function makeTBody(tableElem) {
     const tBodyElem = makeElement('tbody', tableElem, null);
     for (let i = 0; i < allStores.length; i++) {
-        allStores[i].renderStore(tBodyElem);   
+        allStores[i].renderStore(tBodyElem);
     }
 }
 
@@ -87,8 +89,13 @@ function renderHourTotals(rowElem) {
     let dailyTotal = 0;
     for (let hourIndex = 0; hourIndex < storeHours.length; hourIndex++) {
         let hourlyTotal = 0;
-        for (let storeArrayIndex = 0; storeArrayIndex < allStores.length; storeArrayIndex++) {
-            hourlyTotal = hourlyTotal + allStores[storeArrayIndex].salesPerHr[hourIndex];
+        for (
+            let storeArrayIndex = 0;
+            storeArrayIndex < allStores.length;
+            storeArrayIndex++
+        ) {
+            hourlyTotal =
+                hourlyTotal + allStores[storeArrayIndex].salesPerHr[hourIndex];
         }
         makeElement('td', rowElem, hourlyTotal);
         dailyTotal = dailyTotal + hourlyTotal;
@@ -104,7 +111,22 @@ function addStores(location, minCust, maxCust, cookiesPerCust) {
 }
 
 const allStores = [];
-const storeHours = ['6a', '7a', '8a', '9a', '10a', '11a', '12p', '1p', '2p', '3p', '4p', '5p', '6p', '7p'];
+const storeHours = [
+    '6a',
+    '7a',
+    '8a',
+    '9a',
+    '10a',
+    '11a',
+    '12p',
+    '1p',
+    '2p',
+    '3p',
+    '4p',
+    '5p',
+    '6p',
+    '7p',
+];
 addStores('Seattle', 23, 65, 6.3);
 addStores('Toyko', 3, 24, 1.2);
 addStores('Dubai', 11, 38, 3.7);
@@ -114,20 +136,20 @@ storeData();
 makeTable();
 
 const formElem = document.getElementById('addStoreForm');
- 
+
 function handleSubmit(e) {
     e.preventDefault();
+
+    console.log(e);
+    const storeLocation = e.target.storeLocation.value;
+    const minCust = e.target.minCust.value;
+    const maxCust = e.target.maxCust.value;
+    const avgCookies = e.target.avgCookies.value;
+
+    let newStore = new Store(storeLocation, minCust, maxCust, avgCookies);
+    newStore.getCookieTotals();
+    const tableElem = document.getElementsByTagName('tbody')[0];
+    newStore.renderStore(tableElem);
 }
 
-console.log(e);
-let storeLocation = e.target.storeLocation.value;
-let minCust = e.target.minCust.value;
-let maxCust = e.target.maxCust.value;
-let avgCookies = e.target.avgCookies.value;
- 
-let newStore = new Store(location, minCust, maxCust, cookiesPerCust);
-newStore.getAge();
-newStore.renderStore();
-
-formElem.addEventListener('submit', handleSubmit)
-
+formElem.addEventListener('submit', handleSubmit);
