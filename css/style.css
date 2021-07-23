@@ -124,10 +124,11 @@ footer {
 }
 
 table, th, td {
-    border: 1px dotted #194AA3;
+    border: 1px solid #194AA3;
     margin: 50px;
     align-items: center;
     padding: 7px;
+    font-family: 'ubuntu_monoregular', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 th {
@@ -144,12 +145,19 @@ form {
 }
 
 #legend {
-    font: 24px bolder;
-    border: 2px solid gray;
+    font-size: 24px;
+    font-weight: bolder;
+    padding: 20px;
+}
+
+fieldset div {
+    padding: 5px;
+    
 }
 
 label {
     justify-items: right;
+    padding: 5px;
 }
 
 @font-face {

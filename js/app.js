@@ -26,6 +26,7 @@ function Store(location, minCust, maxCust, cookiesPerCust) {
 Store.prototype.renderStore = function (tBodyElem) {
     const rowElem = makeElement('tr', tBodyElem, null);
     makeElement('th', rowElem, this.location);
+    console.log(this);
     for (let i = 0; i < this.salesPerHr.length; i++) {
         makeElement('td', rowElem, this.salesPerHr[i]);
     }
@@ -89,21 +90,14 @@ function renderHourTotals(rowElem) {
     let dailyTotal = 0;
     for (let hourIndex = 0; hourIndex < storeHours.length; hourIndex++) {
         let hourlyTotal = 0;
-        for (
-            let storeArrayIndex = 0;
-            storeArrayIndex < allStores.length;
-            storeArrayIndex++
-        ) {
-            hourlyTotal =
-                hourlyTotal + allStores[storeArrayIndex].salesPerHr[hourIndex];
+        for (let storeArrayIndex = 0; storeArrayIndex < allStores.length; storeArrayIndex++) {
+            hourlyTotal = hourlyTotal + allStores[storeArrayIndex].salesPerHr[hourIndex];
         }
         makeElement('td', rowElem, hourlyTotal);
         dailyTotal = dailyTotal + hourlyTotal;
     }
     makeElement('td', rowElem, dailyTotal);
 }
-
-// // Store.AllStores[i].cookiesPerHour[hourIndex]
 
 function addStores(location, minCust, maxCust, cookiesPerCust) {
     const newStore = new Store(location, minCust, maxCust, cookiesPerCust);
@@ -147,7 +141,8 @@ function handleSubmit(e) {
     const avgCookies = e.target.avgCookies.value;
 
     let newStore = new Store(storeLocation, minCust, maxCust, avgCookies);
-    newStore.getCookieTotals();
+    // newStore.getCookieTotals();
+    storeData();
     const tableElem = document.getElementsByTagName('tbody')[0];
     newStore.renderStore(tableElem);
 }
