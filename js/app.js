@@ -113,4 +113,21 @@ addStores('Lima', 2, 16, 4.6);
 storeData();
 makeTable();
 
-//bleep bloop//
+const formElem = document.getElementById('addStoreForm');
+ 
+function handleSubmit(e) {
+    e.preventDefault();
+}
+
+console.log(e);
+let storeLocation = e.target.storeLocation.value;
+let minCust = e.target.minCust.value;
+let maxCust = e.target.maxCust.value;
+let avgCookies = e.target.avgCookies.value;
+ 
+let newStore = new Store(location, minCust, maxCust, cookiesPerCust);
+newStore.getAge();
+newStore.renderStore();
+
+formElem.addEventListener('submit', handleSubmit)
+

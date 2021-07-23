@@ -63,6 +63,10 @@ section article h3 {
     width: 25%;
 }
 
+#sales {
+    font-size: 36px;
+}
+
 #family {
     height: 400px;
 }
@@ -82,20 +86,18 @@ section article h3 {
     border: black thin;
 }
 
-@font-face {
-    font-family: 'marcellusregular', 'Times New Roman', Times, serif;
-    src: url('marcellus-regular-webfont.woff2') format('woff2'),
-         url('marcellus-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 .flex-grid-fifths {
     display: flex;
     justify-content: space-between;
 }
+
 .flex-grid-fifths .col {
     width: 32%;
+}
+
+.flex-grid-fifths h2 {
+    font-size: 24px;
+    font-weight: bolder;
 }
 
 .column {
@@ -110,4 +112,73 @@ section article h3 {
 #chinook {
     height: 100%;
     width: 100%;
+}
+
+table, th, td {
+    border: 1px dotted #194AA3;
+    margin: 50px;
+    align-items: center;
+    padding: 7px;
+}
+
+th {
+    font-weight: bolder;
+    font-size: 20px;
+    padding: 10px;
+}
+
+form {
+    padding: 50px;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#legend {
+    font: 24px bolder;
+    border: 2px solid gray;
+}
+
+label {
+    justify-items: right;
+}
+
+@font-face {
+    font-family: 'ubuntu_monobold', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    src: url('ubuntumono-bold-webfont.woff2') format('woff2'),
+         url('ubuntumono-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ubuntu_monobold_italic', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    src: url('ubuntumono-bolditalic-webfont.woff2') format('woff2'),
+         url('ubuntumono-bolditalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ubuntu_monoitalic', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    src: url('ubuntumono-italic-webfont.woff2') format('woff2'),
+         url('ubuntumono-italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ubuntu_monoregular', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    src: url('ubuntumono-regular-webfont.woff2') format('woff2'),
+         url('ubuntumono-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'marcellusregular', 'Times New Roman', Times, serif;
+    src: url('marcellus-regular-webfont.woff2') format('woff2'),
+         url('marcellus-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
