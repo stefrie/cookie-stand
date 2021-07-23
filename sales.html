@@ -4,12 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
         <title>Pat's Fish Cookies</title>
-        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="css/reset.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
         <header>
             <h1>Pat's Fish Cookies</h1>
-            <h2>Store Sales</h2>
+            <h2 id="sales">Store Sales</h2>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -18,7 +19,38 @@
             </nav>
         </header>
         <main>
-            <div id="store">
+            <div id="store"></div>
+            <div>
+                <form>
+                    <fieldset>
+                        <legend id='legend'>Add A New Store</legend>
+                        <div>
+                            <label>
+                                Store Location Name
+                                <input type="text" name="storeLocation">
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                Minimum Customers Per Hour
+                                <input type="number" name="minCust">
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                Maximum Customers Per Hour
+                                <input type="number" name="maxCust">
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                Average Cookies Per Customer
+                                <input type="number" name="avgCookies">
+                            </label>
+                        </div>
+                    </fieldset>
+                    <button type=”submit”>Submit</button>
+                </form>
             </div>
         </main>
         <footer></footer>
