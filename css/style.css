@@ -125,6 +125,7 @@ footer {
 
 table, th, td {
     border: 1px solid #194AA3;
+    background-color: #8db0f0;
     margin: 50px;
     align-items: center;
     padding: 7px;
@@ -138,10 +139,11 @@ th {
 }
 
 form {
-    padding: 50px;
+    margin: 30px;
     width: 50%;
     height: 100%;
     overflow: hidden;
+    background-color: #8db0f0;
 }
 
 #legend {
@@ -163,7 +165,7 @@ label {
 @font-face {
     font-family: 'ubuntu_monobold', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     src: url('ubuntumono-bold-webfont.woff2') format('woff2'),
-         url('ubuntumono-bold-webfont.woff') format('woff');
+        url('ubuntumono-bold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -171,7 +173,7 @@ label {
 @font-face {
     font-family: 'ubuntu_monobold_italic', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     src: url('ubuntumono-bolditalic-webfont.woff2') format('woff2'),
-         url('ubuntumono-bolditalic-webfont.woff') format('woff');
+        url('ubuntumono-bolditalic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -179,7 +181,7 @@ label {
 @font-face {
     font-family: 'ubuntu_monoitalic', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     src: url('ubuntumono-italic-webfont.woff2') format('woff2'),
-         url('ubuntumono-italic-webfont.woff') format('woff');
+        url('ubuntumono-italic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -187,7 +189,7 @@ label {
 @font-face {
     font-family: 'ubuntu_monoregular', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     src: url('ubuntumono-regular-webfont.woff2') format('woff2'),
-         url('ubuntumono-regular-webfont.woff') format('woff');
+        url('ubuntumono-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -195,7 +197,7 @@ label {
 @font-face {
     font-family: 'marcellusregular', 'Times New Roman', Times, serif;
     src: url('marcellus-regular-webfont.woff2') format('woff2'),
-         url('marcellus-regular-webfont.woff') format('woff');
+        url('marcellus-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
